@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset ─────────────────────────────────────────────────────────────── */
+
+* {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── CSS Variables ───────────────────────────────────────────────────────────
+   Dark mode is default. Light mode is toggled via .light-mode on <html>.
+────────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --accent:          #FF8C00;
+  --accent-glow:     rgba(255, 140, 0, 0.2);
+  --accent-border:   rgba(255, 140, 0, 0.35);
+  --accent-muted:    rgba(255, 140, 0, 0.08);
+
+  /* Dark mode defaults */
+  --bg:              #0A0A0A;
+  --bg-card:         #111111;
+  --bg-elevated:     #161616;
+  --text-primary:    #FFFFFF;
+  --text-secondary:  rgba(255, 255, 255, 0.5);
+  --text-muted:      rgba(255, 255, 255, 0.25);
+  --border:          rgba(255, 255, 255, 0.08);
+  --border-accent:   rgba(255, 140, 0, 0.3);
+  --scrollbar-track: #0d0d0d;
+  --scrollbar-thumb: rgba(255, 140, 0, 0.2);
+  --scrollbar-hover: rgba(255, 140, 0, 0.4);
+  --select-bg:       #111111;
+  --select-text:     #FFFFFF;
+}
+
+/* ─── Light Mode Overrides ───────────────────────────────────────────────────── */
+
+html.light-mode {
+  --bg:              #F8F9FA;
+  --bg-card:         #FFFFFF;
+  --bg-elevated:     #F0F0F0;
+  --text-primary:    #111111;
+  --text-secondary:  rgba(0, 0, 0, 0.5);
+  --text-muted:      rgba(0, 0, 0, 0.25);
+  --border:          rgba(0, 0, 0, 0.08);
+  --border-accent:   rgba(255, 140, 0, 0.3);
+  --scrollbar-track: #eeeeee;
+  --scrollbar-thumb: rgba(255, 140, 0, 0.3);
+  --scrollbar-hover: rgba(255, 140, 0, 0.55);
+  --select-bg:       #FFFFFF;
+  --select-text:     #111111;
+}
+
+/* ─── Body ───────────────────────────────────────────────────────────────────── */
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+
+/* ─── Select Dropdowns ───────────────────────────────────────────────────────── */
+
+select option {
+  background-color: var(--select-bg);
+  color: var(--select-text);
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in       { animation: fade-in 0.3s ease-out; }
+.animate-fade-in-up    { animation: fade-in-up 0.4s ease-out; }
+.animate-slide-in-right{ animation: slide-in-right 0.4s ease-out; }
+
+/* ─── Line Clamp ─────────────────────────────────────────────────────────────── */
+
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* ─── Accent Utility Classes ─────────────────────────────────────────────────── */
+
+.text-accent        { color: var(--accent); }
+.bg-accent          { background-color: var(--accent); }
+.border-accent      { border-color: var(--border-accent); }
+.bg-accent-muted    { background-color: var(--accent-muted); }
+.glow-accent        { box-shadow: 0 0 20px var(--accent-glow); }
